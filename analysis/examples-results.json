@@ -1,0 +1,392 @@
+{
+  "version": "0.1.0-alpha",
+  "calculators": {
+    "poisson": {
+      "params": {
+        "f0": 0.7,
+        "phi": 0.05
+      },
+      "outputs": {
+        "Units per partition λ": "0.357",
+        "Occupied partition holds ≥2 units": "16.8%",
+        "Selected partition holds ≥2 units": "29.4%",
+        "Risk ratio, selected vs random": "1.75 (→ 2 at low density)"
+      }
+    },
+    "moi": {
+      "params": {
+        "m": 1,
+        "fi": 0.5,
+        "phi": 0.05
+      },
+      "outputs": {
+        "Functional copies per cell λ": "0.50",
+        "Untransduced cells": "60.7%",
+        "Multi-copy among transduced": "22.9%",
+        "Multi-copy among cells that score": "38.6%",
+        "Mean copies, transduced vs scoring": "1.27 vs 1.49"
+      }
+    },
+    "karber": {
+      "params": {
+        "n": 8,
+        "step": 10,
+        "levels": 8,
+        "titerLog10": 4.3
+      },
+      "outputs": {
+        "SE of log10 titer": "0.212",
+        "95% interval, fold below and above": "0.38× to 2.61×",
+        "Smallest reliably resolved ratio (≈ 2.8 SE)": "3.9×"
+      }
+    },
+    "lowcopy": {
+      "params": {
+        "copiesPerReaction": 3,
+        "efficiency": 1,
+        "replicates": 3
+      },
+      "outputs": {
+        "Effective copies": "3.00",
+        "Detection per replicate": "95.0%",
+        "All replicates positive": "85.8%",
+        "At least one positive": "100.0%",
+        "LoD95, nominal copies": "3.00"
+      }
+    },
+    "counting": {
+      "params": {
+        "events": 50,
+        "targetCv": 0.05
+      },
+      "outputs": {
+        "CV from counting alone": "14.1%",
+        "95% interval on the count": "36 to 64",
+        "Events needed for target CV": "400"
+      }
+    },
+    "bottleneck": {
+      "params": {
+        "coverage": 100,
+        "k": 3,
+        "foldThreshold": 2
+      },
+      "outputs": {
+        "Neutral CV after all bottlenecks": "17.3%",
+        "Theory √(k / c)": "17.3%",
+        "Neutral elements called ≥2× depleted": "0.06%",
+        "Called ≥2× enriched": "0.00%",
+        "Elements lost entirely": "0.000%"
+      }
+    },
+    "undersampling": {
+      "params": {
+        "depthPerMolecule": 1,
+        "clonotypeFrequency": 0.0001,
+        "reads": 100000
+      },
+      "outputs": {
+        "Molecules seen at least once": "63.2%",
+        "Duplicate reads": "36.8%",
+        "This clonotype seen": "100.0%",
+        "Reads for 95% chance of seeing it": "29,957"
+      }
+    },
+    "pcr": {
+      "params": {
+        "efficiency": 0.9,
+        "cycles": 30,
+        "templates": 10,
+        "umis": 1048576,
+        "molecules": 100000
+      },
+      "outputs": {
+        "Mean amplification": "2.30e+8",
+        "CV of yield from one template": "22.9%",
+        "CV from 10 templates": "7.25%",
+        "UMI collisions": "4.62%"
+      }
+    },
+    "ado": {
+      "params": {
+        "q": 0.8
+      },
+      "outputs": {
+        "Both alleles": "64.0%",
+        "One allele (dropout)": "32.0%",
+        "No amplification": "4.0%",
+        "Dropout among amplified": "33.3%"
+      }
+    },
+    "capture": {
+      "params": {
+        "trueCount": 5,
+        "capture": 0.1,
+        "trueCv": 0.3
+      },
+      "outputs": {
+        "Cells with zero observed": "59.0%",
+        "Mean observed count": "0.50",
+        "Observed CV vs true CV": "137.5% vs 30.0%",
+        "Share of observed variance that is technical": "95.2%"
+      }
+    },
+    "shot": {
+      "params": {
+        "photons": 100,
+        "readNoise": 1.5,
+        "threshold": 50
+      },
+      "outputs": {
+        "Signal-to-noise": "9.9",
+        "CV": "10.1%",
+        "Falls below threshold": "0.00%"
+      }
+    },
+    "bleach": {
+      "params": {
+        "subunits": 4,
+        "pLabel": 0.75
+      },
+      "outputs": {
+        "Modal step count": 3,
+        "Complexes showing all steps": "31.6%",
+        "Mean steps": "3.00",
+        "Invisible complexes (zero steps)": "0.39%"
+      }
+    },
+    "fcs": {
+      "params": {
+        "concentration_nM": 1,
+        "volume_fL": 1
+      },
+      "outputs": {
+        "Mean molecules in volume": "0.60",
+        "Relative variance 1/⟨N⟩": "1.661",
+        "CV of instantaneous signal": "128.9%"
+      }
+    },
+    "bp": {
+      "params": {
+        "radius_um": 5,
+        "concentration_nM": 0.01,
+        "D": 100,
+        "T": 60
+      },
+      "outputs": {
+        "Relative error floor": "7.4%",
+        "Molecular encounters in T": "2.27e+3",
+        "Time for 5% precision": "133 s"
+      }
+    },
+    "channel": {
+      "params": {
+        "N": 100,
+        "i": 1,
+        "pOpen": 0.5
+      },
+      "outputs": {
+        "Mean current (pA)": "50.0",
+        "Variance (pA²)": "25.00",
+        "CV of current": "10.0%"
+      }
+    },
+    "burst": {
+      "params": {
+        "frequency": 2,
+        "size": 20,
+        "threshold": 60
+      },
+      "outputs": {
+        "Mean mRNA": "40.0",
+        "Fano factor 1 + b": "21.0",
+        "Percent positive": "20.6%",
+        "After doubling frequency": "64.7%",
+        "After doubling size": "56.0%"
+      }
+    },
+    "sort": {
+      "params": {
+        "sigma": 0.5,
+        "topFraction": 0.05,
+        "tau": 2,
+        "t": 4
+      },
+      "outputs": {
+        "Enrichment at sort (SD units)": "2.06",
+        "Enrichment remaining": "13.5%",
+        "Mean now (SD units)": "0.28",
+        "Fold above parent, linear scale": "1.15×"
+      }
+    },
+    "kill": {
+      "params": {
+        "sigma": 1,
+        "d50": 1,
+        "dose": 3,
+        "rho": 0.8
+      },
+      "outputs": {
+        "Survival, first dose": "13.6%",
+        "Survival of survivors, second dose": "59.7%",
+        "Two doses, actual vs independent": "8.11% vs 1.85%",
+        "Second dose kills this much less": "2.14× smaller fraction"
+      }
+    },
+    "persist": {
+      "params": {
+        "f": 0.001,
+        "ks": 2,
+        "kp": 0.01,
+        "t": 6
+      },
+      "outputs": {
+        "Surviving fraction": "9.48e-4",
+        "Log10 kill": "3.02",
+        "Time to 99.9% kill (h)": "5.0",
+        "Same without persisters (h)": "3.45",
+        "Persisters among survivors": "99.4%"
+      }
+    },
+    "switch": {
+      "params": {
+        "kOff": 0.05,
+        "kOn": 0.01,
+        "generations": 20
+      },
+      "outputs": {
+        "Fraction expressing now": "41.8%",
+        "Equilibrium fraction": "16.7%",
+        "Relaxation time (generations)": "16.7"
+      }
+    },
+    "clone": {
+      "params": {
+        "meanDivisions": 10,
+        "cvDivisionTime": 0.2
+      },
+      "outputs": {
+        "Median clone size": "1,024",
+        "CV of clone size": "46.0%",
+        "10th to 90th percentile": "584 to 1,796",
+        "Fold range": "3.1×"
+      }
+    },
+    "ld": {
+      "params": {
+        "m": 2
+      },
+      "outputs": {
+        "P(no mutants) = e^−m": "13.53%",
+        "Median mutants": 4,
+        "Cultures with more than 10× the median": "5.69%",
+        "Estimate m from zero class": "m = −ln(fraction of cultures with no mutants)"
+      }
+    },
+    "drift": {
+      "params": {
+        "p0": 0.2,
+        "N": 500,
+        "s": 0.05,
+        "passages": 20
+      },
+      "outputs": {
+        "Final frequency": "41.7%",
+        "SD from drift": "10.7%",
+        "Drift-only SD, no selection": "7.9%"
+      }
+    },
+    "mt": {
+      "params": {
+        "h": 0.3,
+        "n": 10,
+        "generationsOfDrift": 1
+      },
+      "outputs": {
+        "SD of heteroplasmy in progeny": "14.5%",
+        "Progeny above 60% mutant": "1.9%",
+        "Progeny below 10% mutant": "8.4%"
+      }
+    },
+    "elda": {
+      "params": {
+        "frequency": 1000,
+        "n": 6,
+        "lowDose": 100,
+        "doses": 4
+      },
+      "outputs": {
+        "Doses": "100, 300, 900, 2,700",
+        "Expected take rates": "10%, 26%, 59%, 93%",
+        "SE of ln f": "0.34",
+        "95% interval": "1 in 512 to 1 in 1,951",
+        "Fold width of interval": "3.8×"
+      }
+    },
+    "hier": {
+      "params": {
+        "sdWell": 0.1,
+        "sdPlate": 0.1,
+        "sdDay": 0.15,
+        "nWells": 8,
+        "nPlates": 2,
+        "nDays": 3
+      },
+      "outputs": {
+        "True SE of the condition mean": "0.097",
+        "Naive SE (all wells independent)": "0.030",
+        "Understatement factor": "3.25×",
+        "Variance share: day / plate / well": "80% / 18% / 2%"
+      }
+    },
+    "hook": {
+      "params": {
+        "R": 250,
+        "t": 24,
+        "BT": 1000,
+        "Kd": 1,
+        "D": 10,
+        "nmax": 2,
+        "gamma": 0.75,
+        "DOL": 4,
+        "rhoQ": 6000,
+        "mu": 0.004,
+        "eps": 0.000002,
+        "Cs": 20,
+        "carry": 0.01,
+        "zRef": 100
+      },
+      "outputs": {
+        "At 10 nM: primary front / detected front": "131 / 131 µm",
+        "At 10 nM: secondaries per primary": "0.64",
+        "Signal peaks at": "19.3 nM",
+        "Signal at 10 µM relative to peak": "0%",
+        "Largest single-mechanism fall at 10 µM": "carryover (100%)",
+        "Rim vs 100 µm intensity at 10 µM": "1433 vs 0"
+      }
+    },
+    "wicksell": {
+      "params": {
+        "R": 250,
+        "t": 50
+      },
+      "outputs": {
+        "Mean apparent section radius": "196 µm (πR/4 = 196)",
+        "Mean apparent shell": "71 µm, true 50",
+        "Overstatement": "41%",
+        "Sections that look fully stained": "20%"
+      }
+    },
+    "seed": {
+      "params": {
+        "meanCells": 400,
+        "cvExtra": 0.05
+      },
+      "outputs": {
+        "CV of cell count": "7.1%",
+        "CV of radius": "2.4%",
+        "10th to 90th percentile radius": "97% to 103% of mean"
+      }
+    }
+  }
+}

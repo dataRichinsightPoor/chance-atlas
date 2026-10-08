@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Chance Atlas: stochastic processes that shape bioassay outcomes"
+message: "If you use this software, please cite it using these metadata."
+type: software
+authors:
+  - name: "Data-Rich, Insight-Poor"
+version: 0.1.0-alpha
+license: MIT
+repository-code: "https://github.com/dataRichinsightPoor/chance-atlas"
+url: "https://datarichinsightpoor.github.io/chance-atlas/"
+abstract: "An interactive catalog of stochastic processes affecting bioassays, each with statistical form, affected assays, effect, diagnostic, mitigation, primary references and a closed-form calculator. Includes a worked case on hooked antibody-penetration titrations in spheroids."
+keywords: [bioassay, stochastic processes, Poisson, size-biased sampling, Luria-Delbruck, spheroid penetration]

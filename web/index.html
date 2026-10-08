@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chance Atlas · Stochastic processes in bioassays · Data-Rich, Insight-Poor</title>
+<meta name="description" content="An interactive catalog of the stochastic processes known to shape bioassay outcomes: statistical form, affected assays, effect on the result, diagnostic, mitigation and references, each with a closed-form calculator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2210%22 cy=%2212%22 r=%223%22 fill=%22%237dd5c8%22/%3E%3Ccircle cx=%2221%22 cy=%229%22 r=%222%22 fill=%22%23e7b46b%22/%3E%3Ccircle cx=%2217%22 cy=%2222%22 r=%223.5%22 fill=%22%237dd5c8%22/%3E%3Ccircle cx=%227%22 cy=%2224%22 r=%221.6%22 fill=%22%23e7b46b%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="atlas.css"><script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#entries">Skip to the catalog</a>
+<header>
+<a class="brand" href="index.html"><svg viewBox="0 0 32 32" width="32" height="32" aria-label="Chance Atlas mark" role="img"><circle cx="10" cy="12" r="3" fill="currentColor"/><circle cx="21" cy="9" r="2" fill="currentColor"/><circle cx="17" cy="22" r="3.5" fill="currentColor"/><circle cx="7" cy="24" r="1.6" fill="currentColor"/><circle cx="25" cy="21" r="1.2" fill="currentColor"/></svg><span>DATA-RICH, INSIGHT-POOR<small>EXECUTABLE BIOLOGY</small></span></a>
+<nav aria-label="Resources"><a href="methods.html">The math</a><a href="models.js" download>Model code ↓</a><a href="https://github.com/dataRichinsightPoor/chance-atlas">Source</a><button id="theme">Light mode</button></nav>
+</header>
+<main>
+<section class="intro">
+<div><p class="eyebrow">99 SMALL PROBLEMS <span>/</span> ATLAS</p><h1>Chance Atlas</h1><p class="question">Which randomness is your assay measuring?<br>And which selection step made it worse?</p><p class="tagline">Useful models for assumptions with expensive ambitions.</p></div>
+<aside><span class="badge">RESEARCH-USE ALPHA · <span id="version">v0.1.0-alpha</span></span><h2>Twenty-nine processes.<br>Six places where chance enters an assay.</h2><p>Each entry gives the statistical form, the assays it affects, what it does to the reported number, the diagnostic that exposes it, the mitigation, and the primary literature. A calculator under each entry evaluates the closed form for your parameters.</p><p class="small">A reference companion to the 99 Small Problems series. Every number is synthetic forward-model output under declared assumptions; nothing here is a measurement of any system.</p><a href="#section-A">Sampling and partitioning ↓</a><br><a href="#section-D">Single-cell biology ↓</a><br><a href="#spheroid-hook">The hooked penetration curve ↓</a><br><a href="#by-assay">Index by assay ↓</a></aside>
+</section>
+
+<div class="atlas-toolbar" role="search">
+<div><label for="q">Search</label><input id="q" type="search" placeholder="Poisson, screen, secondary, dropout, …"></div>
+<div><label for="section">Section</label><select id="section"></select></div>
+<div><label for="assay">Assay</label><select id="assay"></select></div>
+<div class="row"><label><input id="calcOnly" type="checkbox">With calculator</label><button id="expand" type="button">Expand all</button><button id="collapse" type="button">Collapse</button><button id="export-all" type="button">Export JSON</button></div>
+</div>
+<p id="count"></p>
+<div id="entries"></div>
+
+<section class="section" id="by-assay"><p class="eyebrow">INDEX BY ASSAY</p><h2>Start from the assay and find the processes that touch it.</h2>
+<p class="lead">The same process appears under several assays, and the same assay is touched by several processes. The index links each assay named in the catalog to its entries.</p>
+<div class="assay-index" id="assay-index"></div>
+</section>
+
+<section class="section diag" id="diagnostics"><p class="eyebrow">DIAGNOSTICS</p><h2>Five measurements that separate the mechanisms.</h2>
+<p class="lead">Most entries in the catalog are exposed by one of a small set of measurements, and the measurements are cheap compared with the experiments they protect.</p>
+<p><strong>Variance against mean.</strong> Poisson processes have variance equal to the mean; a Fano factor above one measures burst size, aggregation or amplification noise; a parabola in the mean reveals binomial gating. Plotting variance against mean across a dilution series or a time course is the first diagnostic for almost every entry in sections A through D.</p>
+<p><strong>The zero class.</strong> Empty wells, cultures with no mutants, cells with no detected transcript and droplets with no signal each estimate a rate through e<sup>−λ</sup>, and the estimate is robust to everything that happens after the zero is set. The Luria–Delbrück p<sub>0</sub> method, the empty-well calibration of limiting dilution and the digital PCR count share this logic.</p>
+<p><strong>Dual reporters and siblings.</strong> Two identical reporters in one cell separate intrinsic from extrinsic noise; sister cells separate inherited state from fresh fluctuation; split-input technical replicates separate amplification noise from biology. Each design asks the same question: how much of the variance is shared by two measurements that should agree?</p>
+<p><strong>The null distribution from controls.</strong> Non-targeting guides, mock-sorted populations, unlabeled secondaries and directly labeled primaries give the distribution of outcomes when the mechanism of interest is absent. A hit is a departure from that distribution, not from zero.</p>
+<p><strong>Variance components.</strong> Controls replicated across wells, plates and days give the three variances that decide where to spend replicates and how wide the real interval is. A standard error computed from wells alone is a statement about pipetting, not about the condition.</p>
+</section>
+
+<section class="section" id="boundaries"><p class="eyebrow">BOUNDARIES</p><h2>What this atlas is and is not.</h2>
+<div class="boundary"><strong>Closed forms, not simulations of your experiment.</strong> Each calculator evaluates an idealized model with the parameters you enter. The models are standard and tested against simulation, but the parameters are yours to justify, and none is estimated from data here.</div>
+<div class="boundary"><strong>Catalog, not census.</strong> The processes listed are the well-documented ones with primary references. Other sources of randomness exist, and apparent stochasticity (section F) is a reminder that some of what looks random is a covariate that was not recorded.</div>
+<div class="boundary"><strong>No experimental data.</strong> Every number on this page is synthetic forward-model output. The implementation is original code written from the public literature cited in each entry. No employer-provided data, constructs, methods or internal results were used.</div>
+</section>
+</main>
+<footer>Chance Atlas · Data-Rich, Insight-Poor · 99 Small Problems · MIT License · <a href="methods.html">Math</a> · <a href="https://github.com/dataRichinsightPoor/chance-atlas">Source</a></footer>
+</body>
+</html>

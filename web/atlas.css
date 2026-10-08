@@ -1,0 +1,48 @@
+.atlas-toolbar{display:grid;grid-template-columns:2fr 1.2fr 1.6fr auto;gap:12px;align-items:end;background:var(--surface);border:1px solid var(--line);padding:16px 18px;margin:28px 0 10px}
+.atlas-toolbar label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.atlas-toolbar input[type=search],.atlas-toolbar select{width:100%;background:var(--surface2);color:var(--ink);border:1px solid var(--line);padding:9px 10px;font:14px var(--sans)}
+.atlas-toolbar .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.atlas-toolbar .row label{margin:0;display:flex;gap:6px;align-items:center;font-size:13px;color:var(--ink)}
+.atlas-toolbar button{background:var(--surface2);color:var(--ink);border:1px solid var(--line);padding:8px 12px;font:13px var(--sans);cursor:pointer}
+.atlas-toolbar button:hover{border-color:var(--teal)}
+#count{font-size:12px;color:var(--muted);margin:0 0 18px}
+.atlas-section{margin:34px 0 10px}.atlas-section .blurb{color:var(--muted);max-width:820px;margin:4px 0 14px;font-size:15px}
+.entry{background:var(--surface);border:1px solid var(--line);margin:0 0 10px;scroll-margin-top:16px}
+.entry summary{list-style:none;display:grid;grid-template-columns:1fr;gap:4px;padding:16px 20px;cursor:pointer}
+.entry summary::-webkit-details-marker{display:none}
+.entry summary .t{font:22px/1.2 var(--serif);color:var(--ink)}
+.entry summary .one{color:var(--muted);font-size:14px}
+.entry summary .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.entry summary .chips i,.entry summary .chips b{font:11px var(--sans);font-style:normal;border:1px solid var(--line);padding:2px 7px;border-radius:2px;color:var(--muted)}
+.entry summary .chips b{color:var(--teal);border-color:var(--teal);font-weight:600}
+.entry[open] summary{border-bottom:1px solid var(--line)}
+.entry .body{padding:6px 20px 20px}
+.entry .body h4{font:12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px}
+.entry .body p{margin:0;max-width:900px;font-size:15px;line-height:1.55}
+.entry .form{font-size:15px;background:var(--surface2);border-left:2px solid var(--teal);padding:12px 14px}
+.entry .refs{margin:4px 0 0;padding-left:18px;font-size:13px;color:var(--muted)}.entry .refs li{margin:3px 0}.entry .refs a{word-break:break-all}
+.calc{border:1px solid var(--line);background:var(--surface2);padding:14px 16px 16px;margin-top:18px}
+.calc-head{display:flex;justify-content:space-between;align-items:center}.calc-head h4{margin:0 !important}
+.calc-grid{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:18px;margin-top:10px}
+.calc .params{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}
+.calc .params label{display:block;font-size:12px;color:var(--muted)}
+.calc .params input{display:block;width:100%;margin-top:3px;background:var(--surface);color:var(--ink);border:1px solid var(--line);padding:7px 8px;font:14px var(--sans)}
+.calc-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.calc-actions button{background:var(--surface);color:var(--ink);border:1px solid var(--line);padding:6px 10px;font:12px var(--sans);cursor:pointer}
+.calc-actions button:hover{border-color:var(--teal)}
+.calc .out{min-width:0}
+.calc .outputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:0 0 10px}
+.calc .outputs div{background:var(--surface);border-top:2px solid var(--teal);padding:8px 10px}
+.calc .outputs dt{font-size:11px;color:var(--muted);letter-spacing:.03em}.calc .outputs dd{margin:3px 0 0;font:600 15px var(--sans);color:var(--ink);word-break:break-word}
+.calc canvas{width:100%;height:300px;display:block;background:var(--surface)}
+.assay-index{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px 22px;margin-top:14px}
+.assay-index h4{margin:0 0 3px;font-size:14px;font-weight:600}.assay-index p{margin:0 0 8px;font-size:13px;color:var(--muted);line-height:1.5}
+.diag p{max-width:900px}
+@media (max-width:900px){.atlas-toolbar{grid-template-columns:1fr}.calc-grid{grid-template-columns:1fr}.entry summary .t{font-size:20px}}
+.calc form{background:transparent;border:0;padding:0}
+.calc .params label{margin:0;font-weight:500}
+.entry .body .hint{margin-top:12px}
+.atlas-toolbar .row label{white-space:nowrap}
+.calc .params.wide{grid-template-columns:1fr 1fr}
+.calc .params.wide .calc-actions{grid-column:1/-1}
+@media (max-width:900px){.calc .params.wide{grid-template-columns:1fr 1fr}}
