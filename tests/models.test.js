@@ -70,6 +70,8 @@ test('Number fluctuations and Berg–Purcell scale as expected', () => {
   const f = M.numberFluctuations({ concentration_nM: 1, volume_fL: 1 }); close(f.meanMolecules, 0.602, 1e-3);
   const a = M.bergPurcell({ radius_um: 1, concentration_nM: 1, D: 100, T: 1 }), b = M.bergPurcell({ radius_um: 1, concentration_nM: 1, D: 100, T: 4 });
   close(a.relativeError / b.relativeError, 2, 1e-9, 'halves with 4x time');
+  close((a.relativeError / a.relAbsorber) ** 2, 12 / 5, 1e-9, 'monitor/absorber variance ratio 12/5');
+  close(a.relAbsorber, 1 / Math.sqrt(a.encounters), 1e-12, 'absorber error is 1/sqrt(arrivals)');
 });
 
 test('Channel noise: variance is a parabola in the mean with apex at p = 1/2', () => {

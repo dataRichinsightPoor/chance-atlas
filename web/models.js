@@ -208,11 +208,15 @@ export function numberFluctuations({ concentration_nM, volume_fL }) {
 }
 
 // Berg–Purcell limit for a perfectly absorbing sphere of radius a (um) in concentration c (nM), diffusion D (um^2/s), time T (s).
+// Berg & Purcell 1977: perfect absorber Var(δc/c) = 1/(4π D a c T) (independent Poisson arrivals);
+// perfectly monitoring sphere Var(δc/c) = 3/(5π D a c T), larger by 12/5 because released molecules return and are recounted.
 export function bergPurcell({ radius_um, concentration_nM, D = 100, T }) {
   const cPerUm3 = concentration_nM * 1e-9 * 6.02214076e23 * 1e-15; // molecules per um^3 (1 um^3 = 1e-15 L)
-  const rel = 1 / Math.sqrt(D * radius_um * cPerUm3 * T);
-  const encounters = 4 * Math.PI * D * radius_um * cPerUm3 * T;
-  return { relativeError: rel, encounters, timeFor5pct: 1 / (D * radius_um * cPerUm3 * 0.05 ** 2) };
+  const x = D * radius_um * cPerUm3 * T;
+  const encounters = 4 * Math.PI * x;
+  const relAbsorber = 1 / Math.sqrt(encounters);
+  const relMonitor = Math.sqrt(3 / (5 * Math.PI * x));
+  return { relativeError: relMonitor, relAbsorber, encounters, timeFor5pct: 3 / (5 * Math.PI * D * radius_um * cPerUm3 * 0.05 ** 2) };
 }
 
 // Single-channel binomial fluctuation (non-stationary noise analysis). N channels, unitary current i (pA), open probability p.

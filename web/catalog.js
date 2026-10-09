@@ -188,9 +188,9 @@ export const ENTRIES = [
   {
     id: 'berg-purcell', section: 'C', title: 'The physical limit of concentration sensing', calc: 'bp',
     one: 'A receptor patch cannot know a concentration better than the molecules that diffuse to it in the integration time.',
-    form: 'For a perfectly absorbing sphere of radius <i>a</i> in concentration <i>c</i> with diffusion coefficient <i>D</i> and integration time <i>T</i>, the relative error is δ<i>c</i>/<i>c</i> ≈ 1/√(<i>D</i><i>a</i><i>c</i><i>T</i>).',
+    form: 'A sphere of radius <i>a</i> in concentration <i>c</i> with diffusion coefficient <i>D</i> receives molecules at rate 4π<i>Dac</i>. A perfect absorber counting independent arrivals for time <i>T</i> has relative error 1/√(4π<i>DacT</i>); a perfectly monitoring sphere, which releases molecules and recounts their returns, has √(3/(5π<i>DacT</i>)), a variance 12/5 larger.',
     assays: ['Chemotaxis and gradient sensing', 'Receptor-occupancy readouts', 'Biosensor response time', 'Cell-based ligand titrations'],
-    effect: 'At picomolar ligand, a micrometer-sized cell integrating for a minute sees too few molecules for a precise response, so cell-to-cell variability in response is partly a physical floor, not biology.',
+    effect: 'At picomolar ligand, a micrometer-sized cell integrating for a minute sees too few independent molecular encounters for a precise response, so part of the cell-to-cell variability in response is a physical floor rather than biology.',
     diagnostic: 'Compare the measured response CV with the Berg–Purcell floor for the ligand concentration and exposure time.',
     mitigation: 'Lengthen exposure, raise concentration into the range where the floor is negligible, or model the floor explicitly.',
     refs: [

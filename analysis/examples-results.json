@@ -174,9 +174,10 @@
         "T": 60
       },
       "outputs": {
-        "Relative error floor": "7.4%",
+        "Error floor, perfectly monitoring sphere": "3.3%",
+        "Error floor, perfect absorber": "2.1%",
         "Molecular encounters in T": "2.27e+3",
-        "Time for 5% precision": "133 s"
+        "Time for 5% precision (monitor)": "25.4 s"
       }
     },
     "channel": {

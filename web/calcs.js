@@ -119,8 +119,8 @@ export const CALCS = {
     params: [P('radius_um', 'Sensor radius (µm)', 5, 0.01, 20, 0.01), P('concentration_nM', 'Ligand (nM)', 0.01, 1e-4, 100, 1e-4), P('D', 'Diffusion coefficient (µm²/s)', 100, 1, 500, 1), P('T', 'Integration time (s)', 60, 0.1, 3600, 0.1)],
     compute: (p) => {
       const r = M.bergPurcell(p), xs = M.logspace(1e-4, 100, 60);
-      return { outputs: [['Relative error floor', pct(r.relativeError)], ['Molecular encounters in T', sci(r.encounters)], ['Time for 5% precision', sci(r.timeFor5pct) + ' s']],
-        chart: { x: xs, series: [{ name: 'Berg–Purcell error floor', y: xs.map(c => 100 * M.bergPurcell({ ...p, concentration_nM: c }).relativeError) }], xLabel: 'Ligand (nM)', yLabel: 'Relative error (%)', logX: true, logY: true, mark: p.concentration_nM } };
+      return { outputs: [['Error floor, perfectly monitoring sphere', pct(r.relativeError)], ['Error floor, perfect absorber', pct(r.relAbsorber)], ['Molecular encounters in T', sci(r.encounters)], ['Time for 5% precision (monitor)', sci(r.timeFor5pct) + ' s']],
+        chart: { x: xs, series: [{ name: 'Perfectly monitoring sphere √(3/(5πDacT))', y: xs.map(c => 100 * M.bergPurcell({ ...p, concentration_nM: c }).relativeError) }, { name: 'Perfect absorber 1/√(4πDacT)', y: xs.map(c => 100 * M.bergPurcell({ ...p, concentration_nM: c }).relAbsorber) }], xLabel: 'Ligand (nM)', yLabel: 'Relative error (%)', logX: true, logY: true, mark: p.concentration_nM } };
     },
   },
   channel: {

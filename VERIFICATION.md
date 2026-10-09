@@ -14,7 +14,7 @@
 | UMI collisions | U(1 − e^−N/U) |
 | Allele and capture dropout | closed forms |
 | Shot noise, bleaching | SNR = √N; binomial normalization, pⁿ, mode |
-| Number fluctuations, Berg–Purcell | ⟨N⟩ at 1 nM in 1 fL; error ∝ 1/√T |
+| Number fluctuations, Berg–Purcell | ⟨N⟩ at 1 nM in 1 fL; error ∝ 1/√T; monitor/absorber variance ratio 12/5; absorber error = 1/√arrivals |
 | Channel noise | variance at p = ½; parabola apex |
 | Bursting | negative binomial normalization, mean rb, Fano 1 + b |
 | Sort relaxation | truncated-normal mean; e^−t/τ decay |

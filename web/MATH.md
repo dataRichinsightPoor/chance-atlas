@@ -72,7 +72,7 @@ Molecules in a volume \(V\) at concentration \(c\) number \(\mathrm{Poisson}(\la
 
 ## The physical limit of concentration sensing {#berg-purcell}
 
-A perfectly absorbing sphere of radius \(a\) in concentration \(c\) receives molecules at rate \(4\pi Dac\). Over time \(T\) it counts \(4\pi DacT\) molecules with Poisson statistics, but molecules that have just left are likely to return, so independent counts accumulate at a lower rate; Berg and Purcell showed the relative error is approximately \(1/\sqrt{DacT}\). Test: scaling with \(T\).
+A sphere of radius \(a\) in concentration \(c\) receives molecules by diffusion at rate \(4\pi Dac\). A perfect absorber counts \(4\pi DacT\) independent Poisson arrivals in time \(T\), so its relative error is \(1/\sqrt{4\pi DacT}\). Berg and Purcell's perfectly monitoring sphere binds and releases every molecule that reaches it, and a released molecule is far more likely than a fresh one to return and be counted again; the correlated recounting raises the variance to \(\langle(\delta c)^2\rangle/c^2 = 3/(5\pi DacT)\), a factor \(12/5\) above the absorber. The calculator reports both. Test: scaling with \(T\) and the \(12/5\) variance ratio.
 
 ## Stochastic ion channel gating {#channel-gating}
 
