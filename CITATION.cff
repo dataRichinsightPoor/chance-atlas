@@ -3,7 +3,8 @@ title: "Chance Atlas: stochastic processes that shape bioassay outcomes"
 message: "If you use this software, please cite it using these metadata."
 type: software
 authors:
-  - name: "Data-Rich, Insight-Poor"
+  - family-names: "Damko"
+    given-names: "Ermelinda"
 version: 0.1.0-alpha
 license: MIT
 repository-code: "https://github.com/dataRichinsightPoor/chance-atlas"
